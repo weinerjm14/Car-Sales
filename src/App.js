@@ -23,11 +23,11 @@ const App = props => {
     <div className="boxes">
       <div className="box">
         <Header car={props.car} />
-        <AddedFeatures car={state.car} />
+        <AddedFeatures car={props.car} />
       </div>
       <div className="box">
         <AdditionalFeatures additionalFeatures={props.additionalFeatures} />
-        <Total car={state.car} additionalPrice={props.additionalPrice} />
+        <Total car={props.car} additionalPrice={props.additionalPrice} />
       </div>
     </div>
   );

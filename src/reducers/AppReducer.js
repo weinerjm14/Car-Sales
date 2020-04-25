@@ -14,7 +14,7 @@ const InitialState = {
     { id: 4, name: "Rear spoiler", price: 250 },
   ],
 };
-const AppReducer = (state, action) => {
+const AppReducer = (state = InitialState, action) => {
   return state;
 };
 export { InitialState, AppReducer };
