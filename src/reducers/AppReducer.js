@@ -1,3 +1,5 @@
+import { ADD_FEATURE, REMOVE_FEATURE } from "../actions/Actions";
+
 const InitialState = {
   additionalPrice: 0,
   car: {
@@ -15,6 +17,34 @@ const InitialState = {
   ],
 };
 const AppReducer = (state = InitialState, action) => {
-  return state;
+  switch (action.type) {
+    case ADD_FEATURE:
+      return {
+        additionalPrice: state.additionalPrice + action.payload.price,
+        car: {
+          ...state.car,
+          features: [...state.car.features, action.payload],
+        },
+
+        additionalFeatures: state.additionalFeatures.filter(item => {
+          return item !== action.payload;
+        }),
+      };
+
+    case REMOVE_FEATURE:
+      return {
+        ...state,
+        car: {
+          ...state.car,
+          price: state.car.price - action.payload.price,
+          features: state.car.features.filter(
+            item => item.id !== action.payload.id
+          ),
+        },
+      };
+
+    default:
+      return state;
+  }
 };
 export { InitialState, AppReducer };
