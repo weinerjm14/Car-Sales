@@ -4,10 +4,14 @@ import { removeFeature } from "../actions/Actions";
 import { connect } from "react-redux";
 
 const AddedFeature = props => {
+  console.log("addFeature: ", props);
   return (
     <li>
       {/* Add an onClick to run a function to remove a feature */}
-      <button onClick={removeFeature(props.car.features.id)} className="button">
+      <button
+        onClick={() => props.removeFeature(props.feature)}
+        className="button"
+      >
         X
       </button>
       {props.feature.name}
@@ -15,8 +19,8 @@ const AddedFeature = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return { car: state.car };
-};
+// const mapStateToProps = state => {
+//   return { car: state.car };
+// };
 
-export default connect(mapStateToProps, { removeFeature })(AddedFeature);
+export default connect(null, { removeFeature })(AddedFeature);
